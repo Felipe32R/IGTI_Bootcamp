@@ -1,0 +1,36 @@
+ul,
+li {
+  list-style-type: none;
+}
+body {
+  margin-top: 3rem;
+  margin-left: 3rem;
+}
+.clickable {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.clickable:hover {
+  color: rgb(255, 0, 0);
+}
+.deleteButton {
+  color: white;
+  background-color: rgb(197, 10, 10);
+  margin-right: 10px;
+  font-weight: bold;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#nome {
+  font-size: 1.5rem;
+}
+
+#inputName {
+  width: 300px;
+  height: 30px;
+}
+
+#editingDisplay {
+  margin-left: 8rem;
+}

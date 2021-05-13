@@ -4,21 +4,17 @@ Filter people according to the selected programming languages and names.
 
 
 
-\```
-
-​		cmd1:
+```	
+		cmd1:
 
 ​		cd backend > npm install > npm start > http://localhost:3001/devs
 
-​		cmd2:
+		cmd2:
 
 ​		cd frontend > npm install > npm start
+```
 
-
-
-\```
-
-
+​		
 
 Run the backend and frontend together to load properly.
 

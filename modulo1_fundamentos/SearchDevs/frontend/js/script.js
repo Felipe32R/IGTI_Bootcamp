@@ -306,7 +306,7 @@ function renderDevs() {
 
   const renderedHTML = `
      <div>
-       <h2>${filteredDevs.length} dev(s) encontrado(s)</h2>
+       <h2>${filteredDevs.length} devs found</h2>
        <div class='row'>
          ${devsToShow}
        </div>

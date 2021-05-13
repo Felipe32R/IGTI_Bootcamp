@@ -39,7 +39,7 @@ async function doFetchCountries(){
   const json = await res.json();
 
   allCountries = json.map(country => {
-    const { numericCode, translations, population, flag} = country;
+    const { numericCode, translations, population, flag} = country; // DESTRUCTURING
 
     return{
       id: numericCode,
@@ -50,12 +50,9 @@ async function doFetchCountries(){
     };
 
   });
-
-  
-
   render();
-  
-  /* REQUISIÇÃO SEM ASYNC/AWAIT
+}
+ /* REQUISIÇÃO SEM ASYNC/AWAIT
   
   fetch('https://restcountries.eu/rest/v2/all')
   .then(res => res.json())
@@ -65,7 +62,6 @@ async function doFetchCountries(){
   });
 
   */
-}
 
 function render (){
   renderCountryList();
@@ -161,7 +157,7 @@ function renderSummary(){
 }
 function handleCountryButtons(){
   const countryButtons = Array.from(tabCountries.querySelectorAll('.btn'));
-  console.log(countryButtons);
+  //console.log(countryButtons);
   const favoriteButtons = Array.from(tabFavorites.querySelectorAll('.btn'));
 
   countryButtons.forEach(button => {

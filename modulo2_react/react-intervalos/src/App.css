@@ -1,0 +1,34 @@
+*{
+  color: rgb(230, 230, 230);
+  background-color: rgb(56, 55, 71);
+}
+
+#title{
+  font-size: 150%;
+  font-weight: 800;
+  
+}
+
+#results{
+  color: rgb(255, 217, 4);
+  font-style:oblique;
+  font-weight: 800;
+  
+  
+}
+
+.container {
+  font-size: 24px;
+  display: grid;
+  justify-content: center;
+}
+li{
+  margin-top: 0.4rem;
+  
+}
+input{
+  height: 2rem;
+  font-size: 20px;
+  background-color: rgb(38, 38, 49);
+  margin-left: 1rem;
+}

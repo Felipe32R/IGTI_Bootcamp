@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Vue.js</title> 
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+        .test-class1{
+            font-style: italic;
+        }
+        .test-class2{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="hello-world">
+        
+    <fieldset>
+    <legend>v-cloak</legend>
+    <p> {{firstName}} </p>
+    <p v-cloak> {{firstName}} </p>
+    </fieldset>
+
+    <fieldset >
+        <legend>template</legend>
+        <div v-html ="htmlContent"> </div>
+        <p> Primeiro nome: {{firstName}} </p> 
+        <p> Último nome: {{lastName}} </p> 
+        <p> Idade: {{age}} </p> 
+        <p> {{age >= 18 ? 'Maior de idade' : 'Menor de idade'}} </p>
+    </fieldset>
+
+    <fieldset>
+        <legend>methods</legend>
+        <button  v-on:click="incrementAge" >Incrementar idade</button>
+        <button  @click="decrementAge" >Decrementar idade</button>
+    </fieldset>
+    
+    <fieldset>
+        <legend>computed properties</legend>
+        <p>Nome completo: {{fullName}} </p>
+    </fieldset>
+
+    <fieldset>
+        <legend>watcher</legend>
+        <label for="input-address">Endereço : </label>
+        <input id="input-address" type="text" v-model="address">
+        <p>(console) press F12</p>
+    </fieldset>
+
+    <fieldset>
+        <legend>v-if</legend>
+        <label for="input-grade">Nota : </label>
+        <input type="text" id="input-grade" v-model="grade">
+        <p v-if="grade < 60">Reprovado</p>
+        <p v-else-if="grade >= 60 && grade < 98">Aprovado</p>
+        <p v-else-if="grade >= 98">Aprovado com excelência</p>
+        <p v-else>Valor inválido</p>
+        
+    </fieldset>
+
+
+    <fieldset>
+        <legend>v-show</legend>
+        <button v-show="!isUserLogged" @click="isUserLogged = true">Login</button>
+        <button v-show="isUserLogged" @click="isUserLogged = false">Logout</button>
+    </fieldset>
+
+    <fieldset>
+        <legend>v-text</legend>
+        <p v-text="firstName"></p>
+    </fieldset>
+
+    <fieldset>
+        <legend>v-html</legend>
+        <div v-html="htmlContent"></div>
+    </fieldset>
+
+    <fieldset>
+        <legend>v-once</legend>
+        <p v-once >{{count}}</p>
+        <p >{{count}}</p>
+
+        <button @click="count++">Incrementar contador</button>
+    </fieldset>
+
+    <fieldset>
+        <legend>v-for</legend>
+        <h3>Marcas</h3>
+        <ul>
+            <li v-for="brand in carBrands"> {{brand}} </li>
+        </ul>
+
+        <h3>Carros</h3>
+        <ul>
+            <li v-for="car in cars"> {{car.name}} ({{car.brand}}) </li>
+        </ul>
+
+        <h3>Carro</h3>
+        <p v-for="(value, key, index) in car"> {{index}} - {{key}} - {{value}} </p>
+    </fieldset>
+
+    <fieldset>
+        <legend>v-bind</legend>
+        <a v-bind:href="urlIgti">IGTI</a>
+        <br>
+        <a :href="urlIgti" :[argument] ="urlIgtiDescription" >IGTI</a>
+    </fieldset>
+
+    <fieldset>
+        <legend>v-model</legend>
+
+        <label for="input-firstname">Primeiro nome : </label>
+        <input id="input-firstname" type="text" v-model="firstName">
+        <br>
+
+        <label for="textarea-html">HTML</label>
+        <textarea id="textearea-html" v-model="htmlContent"></textarea>
+        <br>
+
+        <label for="checkbox" > {{checked}} </label>
+        <input type="checkbox" id="checkbox" v-model="checked" >
+        <br>
+
+        <div>
+        <label for="one">Um : </label>
+        <input type="radio" id="one" value="Um" v-model="selectedOption">
+        <br>
+        <label for="two">Dois : </label>
+        <input type="radio" id="two" value="Dois" v-model="selectedOption">
+        <br>
+        <p>Opção escolhida: {{selectedOption}} </p>
+        </div>
+
+        <select v-model="selectedCar">
+            <option v-for="car in cars" :value="car">
+                {{car.name}} - {{car.brand}}
+            </option>
+        </select>
+        <p>Carro escolhido: {{selectedCar.name}} - {{selectedCar.brand}} </p>
+    </fieldset>
+
+    <fieldset>
+        <legend>v-pre</legend>
+        <p> {{firstName}} </p>
+        <p v-pre> {{firstName}} </p>
+    </fieldset>
+
+    <fieldset>
+        <legend>events</legend>
+        <div>
+        <button @click="eventTest('click')">On click</button>
+        <button @click="eventTest">On click Event Param implicit</button>
+        <button @click="eventTestParam('@click', $event)">On click Event Param explicit</button>
+        <button @dblclick="eventTest('dblclick')">On double click </button>
+        <button @click.left="eventMouseTest">Click left</button>
+        <button @click.right.prevent="eventMouseTest">Click right</button>
+        <button @click.middle="eventMouseTest">Click middle</button>
+        <br>
+        <p @mouseenter="eventMouseTest" @mouseleave="eventMouseTest">Mouse hover test</p>
+        </div>
+
+        <div>
+        <a :href="urlIgti" :[argument] ="urlIgtiDescription" 
+        @click.prevent="showAlert('blocked')">IGTI</a>
+        <br>
+        <a :href="urlIgti" :[argument] ="urlIgtiDescription" 
+        @click.prevent.once="showAlert('blocked')" target="_blank">IGTI</a>
+        </div>
+
+        <div>
+            <p>keyup</p>
+            <input @keyup.enter="eventKeyTest" placeholder="press enter">
+            <input @keyup.delete="eventKeyTest" placeholder="press delete">
+            <input @keyup.esc="eventKeyTest" placeholder="press esc">
+            <input @keyup.up="eventKeyTest" placeholder="press up">
+            <input @keyup.down="eventKeyTest" placeholder="press down">
+            <input @keyup.left="eventKeyTest" placeholder="press left">
+            <input @keyup.right="eventKeyTest" placeholder="press right">
+            <br>
+            <p>keydown</p>
+            <input @keydown.tab.prevent="eventKeyTest" placeholder="press tab">
+            <input @keydown.ctrl="eventKeyTest" placeholder="press ctrl">
+            <input @keydown.shift="eventKeyTest" placeholder="press shift">
+        </div>
+        <button @click.ctrl="eventTest('ctrl + click')">Ctrl + Click </button>
+        <button @click.ctrl.exact="eventTest('ctrl + click')">Ctrl + Click exact</button>
+    </fieldset>
+    
+    <fieldset>
+        <legend>styles</legend>
+        <p :style="{color: textColor}">event style object</p>
+        <p :style="textColorObject"> inline style object bind</p>
+        <p class="test-class1" :class="classTest2"> class bind </p>
+        <p :class="classList"> class bind list</p>
+        <p :class="[classTest1, classTest2]"> class list inline</p>
+        <p :class="1 > 2 ? classTest1 : classTest2"> class expression</p>
+    </fieldset>
+
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3.0.4"></script>
+
+    <script>
+        const app = {
+            data(){
+                return{
+                    htmlContent: "<p style='color:blue; font-size: 2rem'> Hello World!</p>",//v-html
+                    firstName: 'Felipe',
+                    lastName: 'Ramalho',
+                    age: 19,
+                    address: "",
+                    grade: 0,
+                    isUserLogged: false,
+                    count: 1,
+                    carBrands: ["Volkswagen", "Fiat", "Renault"],
+                    cars: [{name: "Ka", brand: "Ford"},
+                    {name: "Palio", brand: "Fiat"},
+                    {name: "Sandero", brand: "Renault"}],
+                    car: {name: "Ka", brand: "Ford", year:2010, km: 60000},
+                    urlIgti: "https://igti.com.br",
+                    urlIgtiDescription: "Acesse o site do IGTI",
+                    argument: "title",
+                    checked: false,
+                    selectedOption: "",
+                    selectedCar: {},
+                    textColor: "red",
+                    textColorObject: {
+                        color: 'green',
+                        fontSize: '25px'
+                    },
+                    classTest1: 'test-class1',
+                    classTest2: 'test-class2',
+                    classList: ['test-class1', 'test-class2']
+                    
+                }
+            },
+            methods: {
+                incrementAge(){
+                    this.age++;
+                },
+                decrementAge(){
+                    this.age--;
+                },
+                eventTest(name){
+                    console.log(name);
+                },
+                eventTestParam(name, event){
+                    console.log(name);
+                    console.log(event);
+                    
+                },
+                eventMouseTest(event){
+                    console.log(event.type);
+                },
+                showAlert(msg){
+                    alert(msg);
+                },
+                eventKeyTest(event){
+                    console.log(event.key, event.type);
+                }
+            },
+           computed: {
+               fullName(){
+                   return `${this.firstName} ${this.lastName}`;
+               }
+           },
+           watch: {
+            address(newValue, oldValue){
+                console.log(newValue);
+                console.log(oldValue);
+            }
+           }
+        }
+        
+        const vm = Vue.createApp(app).mount("#hello-world");
+    </script>
+
+    
+</body>
+</html>

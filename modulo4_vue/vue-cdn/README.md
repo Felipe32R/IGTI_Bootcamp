@@ -1,0 +1,1 @@
+Introduction to Vue with methods, computed properties and directives using Vue CDN.

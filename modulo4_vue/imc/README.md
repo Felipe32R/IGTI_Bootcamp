@@ -12,5 +12,7 @@ Calculation of the body mass index.
 
 ````
 
-![imcgif](https://user-images.githubusercontent.com/73653212/124035434-e7306480-d9d2-11eb-9995-8e99531434a5.gif)
+<img src="https://user-images.githubusercontent.com/73653212/124059244-24abe680-da01-11eb-9dde-4bd2d0707c09.gif" alt="imc" style="zoom:100%;" />
+
+
 

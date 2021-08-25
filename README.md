@@ -1,3 +1,5 @@
+*ainda falta adicionar alguns projetos que estou utilizando para estudo
+
 # IGTI Bootcamp 
 
 ##### Módulo 1 - Javascript 
